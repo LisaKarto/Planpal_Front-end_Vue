@@ -6,13 +6,20 @@
                 <!-- <h1>{{this.currentMode}}</h1> -->
             </b-col>
             <b-col style="align-self: flex-end; text-align: right;" cols="4">
-                <b-button v-if="this.currentMode == 'aanpassen'|| this.currentMode == 'verwijderen'"
+                <b-button v-if="this.currentMode == 'aanpassen'|| this.currentMode == 'verwijderen'" variant="none"
                     v-on:click="inzienmode">
-                    view</b-button>
+                    <b-icon-eye-fill></b-icon-eye-fill>
+                </b-button>
                 <b-button style="margin-left:5px;"
-                    v-if="this.currentMode == 'inzien' || this.currentMode == 'verwijderen'" v-on:click="editmode">
-                    edit</b-button>
-                <b-button style="margin-left:5px;" v-on:click="verwijdermode">verwijderen</b-button>
+                    v-if="this.currentMode == 'inzien' || this.currentMode == 'verwijderen'" variant="none"
+                    v-on:click="editmode">
+                    <b-icon-pencil-square></b-icon-pencil-square>
+                </b-button>
+                <b-button v-if="this.currentMode == 'inzien' || this.currentMode == 'aanpassen'"
+                    style="margin-left:5px;" variant="none" v-on:click="verwijdermode">
+                    <b-icon-trash-fill>
+                    </b-icon-trash-fill>
+                </b-button>
             </b-col>
         </b-row>
         <hr />

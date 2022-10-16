@@ -46,7 +46,7 @@ export default {
     methods: {
         onSubmit(event) {
             event.preventDefault()
-            alert("lijst is aangemaakt.")
+            alert("lijst wordt aangemaakt.")
             axios.post(Vue.prototype.$Api + "lijsten/", this.form)
                 .then(function () {
                     this.$router.go();

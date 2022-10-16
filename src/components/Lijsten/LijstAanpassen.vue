@@ -1,38 +1,51 @@
-<!-- <h1>{{this.res.lijstNaam}} bekijken.</h1>
-<b-form v-if="show">
-    <b-form-group id="input-group-1" label="Lijstnaam:" label-for="input-1">
-        <b-form-input id="input-1" type="text" v-model="this.res.lijstNaam"
-            placeholder="Vul hier uw lijst naam in" required>
-        </b-form-input>
-    </b-form-group>
-    <b-form-group id="input-group-3" label="Lijst soort:" label-for="input-3">
-        <b-form-select id="input-3" v-model="this.res.lijstSoort" :options="Soorten" required></b-form-select>
-    </b-form-group>
-    <b-button @click="onUpdate" variant="success">Lijst aanpassen</b-button>
-    <b-button type="delete" variant="danger">Lijst verwijderen</b-button>
-</b-form> -->
-
 <template>
     <b-container>
-        <h1>hi {{this.lijst.lijstNaam}}</h1>
-        <!-- <b-form @submit="onSubmit" v-if="show">
-            <b-form-group id="input-group-1" label="Email address:" label-for="input-1">
-                <b-form-input id="input-1" v-model="this.res.LijstNaam" type="email" placeholder="Enter email" required>
-                </b-form-input>
+        <b-form @submit="onSubmit" v-if="show">
+
+            <b-form-group id="input-group-2" label-for="input-2">
+                <b>Lijst naam:</b>
+                <b-form-input id="input-2" v-model="form.lijstNaam" placeholder="Enter name" required></b-form-input>
             </b-form-group>
-            <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-                <b-form-select id="input-3" v-model="this.res.lijstsoort" :options="soorten" required></b-form-select>
+
+            <b-form-group id="input-group-3" label-for="input-3">
+                <b>Lijst soort:</b>
+                <b-form-select id="input-3" v-model="form.lijstSoort" :options="lijstsoorten" required></b-form-select>
             </b-form-group>
-            <b-button type="submit" variant="primary">Submit</b-button>
-            <b-button type="reset" variant="danger">Reset</b-button>
-        </b-form> -->
+            <b-button type="submit" variant="success">Aanpassen</b-button>
+        </b-form>
+        <div v-if="!show">
+            <h1>Aangepast!</h1>
+        </div>
     </b-container>
 </template>
 
 <script>
+import axios from 'axios'
+import Vue from 'vue'
+
 export default {
     props: {
         lijst: {}
+    }, data() {
+        return {
+            form: {
+                idLijst: this.lijst.idlijst,
+                lijstNaam: this.lijst.lijstNaam,
+                lijstSoort: this.lijst.lijstSoort,
+            },
+            lijstsoorten: [{ text: this.lijst.lijstSoort, value: this.lijst.lijstSoort }, 'To-do Lijst', 'Item list'],
+            show: true
+        }
+    },
+    methods: {
+        onSubmit(event) {
+            event.preventDefault()
+            alert(JSON.stringify(this.form))
+            axios.put(Vue.prototype.$Api + "lijsten/" + this.lijst.idlijst, this.form)
+                .then(function () {
+                    this.$router.go();
+                }.bind(this));
+        }
     }
 }
 </script>

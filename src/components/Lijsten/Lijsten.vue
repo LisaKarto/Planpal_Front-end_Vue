@@ -37,7 +37,7 @@
 <script>
 
 import axios from 'axios'
-import NewListFormModal from '../modal/NewListFormModal.vue';
+import NewListFormModal from '../Lijsten/modal/NewListFormModal.vue';
 import Vue from 'vue'
 
 export default {
