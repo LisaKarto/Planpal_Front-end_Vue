@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-form-group id="input-group-1" label="Lijst naam:" label-for="input-1">
                 <b-form-input id="input-1" v-model="form.lijstNaam" type="text" placeholder="voer een lijst naam in"
@@ -18,9 +17,6 @@
             </b-form-group>
             <b-button type="submit" variant="primary">Lijst aanmaken</b-button>
         </b-form>
-        <!-- <b-card class="mt-3" header="Form Data Result">
-            <pre class="m-0">{{ form }}</pre>
-        </b-card> -->
     </div>
 </template>
 
@@ -58,6 +54,10 @@ export default {
             this.$nextTick(() => {
                 this.show = true
             })
+        },
+        hide(event) {
+            event.preventDefault()
+            this.show = false;
         }
     }
 }

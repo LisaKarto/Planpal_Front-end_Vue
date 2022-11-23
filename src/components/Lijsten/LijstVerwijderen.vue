@@ -10,7 +10,7 @@
         <br>
         <b-row>
             <b-col>
-                <b-button @click="onDelete" variant="danger">verwijderen.</b-button>
+                <b-button @click="onDelete" variant="danger">verwijderen</b-button>
             </b-col>
         </b-row>
     </b-container>

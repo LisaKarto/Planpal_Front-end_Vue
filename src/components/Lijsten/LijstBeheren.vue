@@ -1,43 +1,49 @@
 <template>
     <b-container class="main-container">
         <b-row align-h="between">
-            <b-col cols="4">
-                <h1>{{this.res.lijstNaam}} beheren.</h1>
-                <!-- <h1>{{this.currentMode}}</h1> -->
+            <b-col>
+                <h1>U bekijkt nu: {{this.res.lijstNaam}}</h1>
+                <b-button style="height:40px" variant="secondary " v-on:click="hide=!hide">
+                    <p v-if="this.hide">Lijst informatie inzien</p>
+                    <p v-if="!this.hide">Lijst informatie verstoppen</p>
+                </b-button>
             </b-col>
-            <b-col style="align-self: flex-end; text-align: right;" cols="4">
-                <b-button v-if="this.currentMode == 'aanpassen'|| this.currentMode == 'verwijderen'" variant="none"
-                    v-on:click="inzienmode">
+            <b-col v-if="this.hide == false" style="align-self: flex-end; text-align: right;" cols="4">
+                <!-- v-if="this.currentMode == 'aanpassen'|| this.currentMode == 'verwijderen'" -->
+                <b-button variant="none" v-on:click="inzienmode">
                     <b-icon-eye-fill></b-icon-eye-fill>
                 </b-button>
-                <b-button style="margin-left:5px;"
-                    v-if="this.currentMode == 'inzien' || this.currentMode == 'verwijderen'" variant="none"
-                    v-on:click="editmode">
+                <!--   v-if="this.currentMode == 'inzien' || this.currentMode == 'verwijderen'" -->
+                <b-button style="margin-left:5px;" variant="none" v-on:click="editmode">
                     <b-icon-pencil-square></b-icon-pencil-square>
                 </b-button>
-                <b-button v-if="this.currentMode == 'inzien' || this.currentMode == 'aanpassen'"
-                    style="margin-left:5px;" variant="none" v-on:click="verwijdermode">
+                <!-- v-if="this.currentMode == 'inzien' || this.currentMode == 'aanpassen'" -->
+                <b-button style="margin-left:5px;" variant="none" v-on:click="verwijdermode">
                     <b-icon-trash-fill>
                     </b-icon-trash-fill>
                 </b-button>
             </b-col>
         </b-row>
-        <hr />
-        <b-row v-if="this.currentMode == 'inzien'">
+        <hr v-if="this.hide == false" />
+        <b-row v-if="this.currentMode == 'inzien' && this.hide == false">
             <b-col>
-                <LijstInzien v-bind:lijst="this.res"></LijstInzien>
+                <LijstInzien v-bind:lijst=" this.res">
+                </LijstInzien>
             </b-col>
         </b-row>
-        <b-row v-if="this.currentMode == 'aanpassen'">
+        <b-row v-if="this.currentMode == 'aanpassen' && this.hide == false">
             <b-col>
                 <LijstAanpassen v-bind:lijst="this.res"></LijstAanpassen>
             </b-col>
         </b-row>
-        <b-row v-if="this.currentMode == 'verwijderen'">
+        <b-row v-if="this.currentMode == 'verwijderen' && this.hide == false">
             <b-col>
                 <LijstVerwijderen v-bind:lijst="this.res"></LijstVerwijderen>
             </b-col>
         </b-row>
+        <hr />
+        <!-- // get component with list contents -->
+        <TaakOverzicht></TaakOverzicht>
     </b-container>
 </template>
 
@@ -48,11 +54,13 @@ import LijstVerwijderen from '../Lijsten/LijstVerwijderen.vue';
 import axios from 'axios'
 import Vue from 'vue'
 
+
 export default {
     data: function () {
         return {
             res: '',
-            currentMode: "inzien"
+            currentMode: "inzien",
+            hide: true
         }
     },
     mounted() {
