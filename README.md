@@ -1,5 +1,24 @@
-# todoapplication
+# Planpal, planning assistent!
+![alternative](https://cdn.discordapp.com/attachments/858323037475962900/1045068096542617660/PlanPalSolo.png)
 
+# Get started
+[Get started immediately](#project-setup)
+
+# Table of contents
+- [Planpal, planning assistent!](#planpal-planning-assistent)
+- [Get started](#get-started)
+- [Table of contents](#table-of-contents)
+- [What is Planpal](#what-is-planpal)
+  - [The general](#the-general)
+  - [Project setup](#project-setup)
+    - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
+    - [Compiles and minifies for production](#compiles-and-minifies-for-production)
+    - [Lints and fixes files](#lints-and-fixes-files)
+    - [Customize configuration](#customize-configuration)
+
+<a id="What_is_Planpal"></a>
+# What is Planpal 
+## The general
 ## Project setup
 ```
 npm install
