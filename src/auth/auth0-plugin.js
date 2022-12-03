@@ -3,9 +3,8 @@
  */
 
 import Vue from 'vue';
-import createAuth0Client from '@auth0/auth0-spa-js';
-let test = require("@auth0/auth0-spa-js");
 
+let test = require('@auth0/auth0-spa-js');
 /**
  *  Vue.js Instance Definition
  */
@@ -21,7 +20,7 @@ export const getInstance = () => instance;
 export const useAuth0 = ({
     onRedirectCallback = () =>
         window.history.replaceState({}, document.title, window.location.pathname),
-    redirectUri = "https://google.nl",
+    redirectUri = window.location.origin,
     ...pluginOptions
 }) => {
     if (instance) return instance;
@@ -51,7 +50,6 @@ export const useAuth0 = ({
             },
 
             loginWithRedirect(options) {
-                console.log(this.auth0Client);
                 return this.auth0Client.loginWithRedirect(options);
             },
 
@@ -65,19 +63,13 @@ export const useAuth0 = ({
         },
 
         async created() {
-
-            console.log(createAuth0Client);
-            try {
-                this.auth0Client = await test.createAuth0Client({
-
-                    ...pluginOptions,
-                    domain: pluginOptions.domain,
-                    client_id: pluginOptions.clientId,
-                    audience: pluginOptions.audience,
-                    redirect_uri: redirectUri,
-                });
-            } catch (e) { console.log(test); }
-
+            this.auth0Client = await test.createAuth0Client({
+                ...pluginOptions,
+                domain: pluginOptions.domain,
+                client_id: pluginOptions.clientId,
+                audience: pluginOptions.audience,
+                redirect_uri: redirectUri,
+            });
 
             try {
                 if (

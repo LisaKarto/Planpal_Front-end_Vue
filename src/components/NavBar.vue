@@ -11,7 +11,7 @@
                 <b-navbar variant="faded" type="light">
                     <router-link to="/" class="link">
                         <b-navbar-brand href="/">
-                            <img src="../assets/PlanPalSolo.png" class="d-inline-block logo" alt="Kitten">
+                            <img src="../assets/PlanPalNoBg.png" class="d-inline-block logo" alt="Kitten">
                             Planpal
                         </b-navbar-brand>
                     </router-link>
