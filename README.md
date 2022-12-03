@@ -15,8 +15,8 @@
     - [Compiles and minifies for production](#compiles-and-minifies-for-production)
     - [Lints and fixes files](#lints-and-fixes-files)
     - [Customize configuration](#customize-configuration)
-
-<a id="What_is_Planpal"></a>
+- [Design](#design)
+- [User stories/features](#user-storiesfeatures)
 # What is Planpal 
 ## The general
 ## Project setup
@@ -41,3 +41,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+# Design
+# User stories/features
