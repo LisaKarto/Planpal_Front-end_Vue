@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { authenticationGuard } from '@/auth/authenticationGuard'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,12 @@ const routes = [
       default: true,
     },
     component: () => import('../views/LijstBeherenView.vue')
+  },
+  {
+    path: '/Profile',
+    name: 'ProfileComponent',
+    component: () => import('../components/Users/Profile.vue'),
+    beforeEnter: authenticationGuard,
   }
 ]
 

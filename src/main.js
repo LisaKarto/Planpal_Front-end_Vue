@@ -7,11 +7,11 @@ import { domain, clientId, audience } from '../auth_config.json';
 import { Auth0Plugin } from '@/auth/auth0-plugin';
 
 Vue.config.productionTip = false
-
+console.log({ domain, clientId, audience });
 Vue.use(Auth0Plugin, {
-  domain,
-  clientId,
-  audience,
+  domain: domain,
+  clientId: clientId,
+  audience: audience,
   onRedirectCallback: (appState) => {
     router.push(
       appState && appState.targetUrl
