@@ -1,7 +1,7 @@
 <template>
-    <button class="btn btn-danger btn-block" v-if="$auth.isAuthenticated" @click.prevent="logout">
+    <b-button variant="info" v-if="$auth.isAuthenticated" @click.prevent="logout">
         Log Out
-    </button>
+    </b-button>
 </template>
   
 <script>

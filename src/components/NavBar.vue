@@ -26,6 +26,11 @@
                             Mijn lijsten
                         </router-link>
                     </b-nav-item>
+                    <b-nav-item v-if="$auth.isAuthenticated">
+                        <router-link to="/Profile" class="link">
+                            Profile
+                        </router-link>
+                    </b-nav-item>
                 </b-navbar-nav>
                 <!-- Main nav left-->
                 <!-- Right aligned nav items -->

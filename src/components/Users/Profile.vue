@@ -1,23 +1,33 @@
 <template>
-    <div>
-        <div class="row align-items-center profile-header">
-            <div class="col-md-2 mb-3">
-                <img :src="$auth.user.picture" alt="User's profile picture"
-                    class="rounded-circle img-fluid profile-picture" />
-            </div>
-            <div class="col-md text-center text-md-left">
-                <h2>{{ $auth.user.name }}</h2>
-                <p class="lead text-muted">{{ $auth.user.email }}</p>
-            </div>
-        </div>
+    <b-container>
+        <b-row class="justify-content-center">
+            <h1>Your personal information.</h1>
+        </b-row>
+        <b-row>
+            <b-media tag="li">
+                <template #aside>
+                    <b-img :src="$auth.user.picture" alt="User's profile picture"
+                        class="rounded-circle img-fluid profile-picture"></b-img>
+                </template>
+                <h2 class="mt-0 mb-1">{{ $auth.user.name }}</h2>
+                <br />
+                <p class="mb-0">
+                    <b>Name:</b> {{ $auth.user.nickname }}
+                </p>
+                <p class="mb-0">
+                    <b>Email:</b> {{ $auth.user.email }}
+                </p>
 
-        <div class="row">
-            <pre class="col-12 text-light bg-dark p-4">
+            </b-media>
+        </b-row>
+        <br />
+        <b-row>
+            <pre style="background-color: gray;">
   {{
         JSON.stringify($auth.user, null, 2)
   }}</pre>
-        </div>
-    </div>
+        </b-row>
+    </b-container>
 </template>
 
 
@@ -27,3 +37,6 @@ export default {
 }
 </script>
 
+<style>
+
+</style>

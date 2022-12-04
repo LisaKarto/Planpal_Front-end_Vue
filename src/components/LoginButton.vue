@@ -1,7 +1,7 @@
 <template>
-    <button class="btn btn-primary btn-block" v-if="!$auth.isAuthenticated" @click="login">
+    <b-button block variant="info" v-if="!$auth.isAuthenticated" @click="login">
         Log In
-    </button>
+    </b-button>
 </template>
 
 <script>

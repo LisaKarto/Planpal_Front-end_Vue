@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pop" :class="{homebackgrnd : isHome}">
     <Loading v-if="$auth.isLoading" />
     <div v-else id="app">
       <NavBar />
@@ -21,6 +21,11 @@ Vue.use(IconsPlugin)
 
 Vue.prototype.$Api = "http://localhost:8080/";
 export default {
+  computed:{
+    isHome(){
+      return this.$route.path === '/' && !this.$auth.isLoading;
+    }
+  },
   name: 'AppView',
   components: {
     Loading,
@@ -35,7 +40,15 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
+}
+.pop{
+  width: 100vw;
+  height:100vh;
+  background-image: none;
+}
+.homebackgrnd {
+  background-image: url("../src/assets/tyler-rutherford-Uacqp0cIyLc-unsplash-3.jpg");
 }
 </style>
