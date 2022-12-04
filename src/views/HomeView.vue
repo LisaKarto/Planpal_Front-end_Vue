@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img class="logoHome" alt="Vue logo" src="../assets/PlanPalNoBg.png">
+    <HelloWorld msg="Welcome to PlanPal" />
   </div>
 </template>
 
@@ -16,3 +16,14 @@ export default {
   }
 }
 </script>
+
+<style>
+body {
+  background-image: url("../assets/tyler-rutherford-Uacqp0cIyLc-unsplash-3.jpg");
+}
+
+.logoHome {
+  height: 350px;
+  width: 375px;
+}
+</style>

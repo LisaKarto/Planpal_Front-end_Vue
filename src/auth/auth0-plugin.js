@@ -49,8 +49,11 @@ export const useAuth0 = ({
                 }
             },
 
-            loginWithRedirect(options) {
+            async loginWithRedirect(options) {
+
                 return this.auth0Client.loginWithRedirect(options);
+
+
             },
 
             logout(options) {
@@ -63,14 +66,17 @@ export const useAuth0 = ({
         },
 
         async created() {
+
             this.auth0Client = await test.createAuth0Client({
                 ...pluginOptions,
                 domain: pluginOptions.domain,
                 client_id: pluginOptions.clientId,
                 audience: pluginOptions.audience,
-                redirect_uri: redirectUri,
+                authorizationParams: {
+                    redirect_uri: redirectUri
+                }
             });
-
+            console.log(this.auth0Client.options);
             try {
                 if (
                     window.location.search.includes('code=') &&
