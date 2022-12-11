@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/lijsten',
     name: 'lijsten',
-    component: () => import('../views/LijstenView.vue'),
+    component: () => import('../views/Lists/ListsView.vue'),
     beforeEnter: authenticationGuard
   },
   {
@@ -23,7 +23,7 @@ const routes = [
     props: {
       default: true,
     },
-    component: () => import('../views/LijstBeherenView.vue'),
+    component: () => import('../views/Lists/ListManagementView.vue'),
     beforeEnter: authenticationGuard
   },
   {

@@ -1,9 +1,9 @@
 <template>
     <b-container class="main">
 
-        <b>Lijst naam:</b> {{this.lijst.lijstNaam}}
+        <b>List name:</b> {{ this.lijst.lijstNaam }}
         <br>
-        <b>Lijst soort:</b> {{this.lijst.lijstSoort}}
+        <b>Type of list:</b> {{ this.lijst.lijstSoort }}
     </b-container>
 </template>
 

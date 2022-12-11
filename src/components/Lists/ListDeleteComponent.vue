@@ -2,15 +2,15 @@
     <b-container>
         <b-row>
             <b-col>
-                <b>Lijst naam:</b> {{this.lijst.lijstNaam}}
+                <b>List name:</b> {{ this.lijst.lijstNaam }}
                 <br>
-                <b>Lijst soort:</b> {{this.lijst.lijstSoort}}
+                <b>Type of list:</b> {{ this.lijst.lijstSoort }}
             </b-col>
         </b-row>
         <br>
         <b-row>
             <b-col>
-                <b-button @click="onDelete" variant="danger">verwijderen</b-button>
+                <b-button @click="onDelete" variant="danger">Delete</b-button>
             </b-col>
         </b-row>
     </b-container>
@@ -27,7 +27,7 @@ export default {
     methods: {
         onDelete(event) {
             event.preventDefault()
-            alert("lijst wordt verwijdert.")
+            alert("Your list is being deleted.")
             axios.delete(Vue.prototype.$Api + "lijsten/" + this.lijst.idlijst)
                 .then(function () {
                     this.$router.replace('/lijsten')

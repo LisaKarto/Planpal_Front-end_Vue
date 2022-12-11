@@ -1,14 +1,14 @@
 <template>
     <b-container class="test" fluid="md">
-        <b-button style="float:right" v-b-modal.modal-xl variant="success">Lijst toevoegen</b-button>
+        <b-button style="float:right" v-b-modal.modal-xl variant="success">Create new list</b-button>
 
         <b-modal id="modal-xl" hide-footer size="xl" title="Nieuwe lijst aanmaken">
             <NewListFormModal></NewListFormModal>
         </b-modal>
-        <div v-if="!res.length">U heeft geen lijsten</div>
+        <div v-if="!res.length">No lists found.</div>
         <div v-else>
             <h2>
-                u heeft {{res.length}} lijst(en).
+                You have {{ res.length }} list(s).
             </h2>
             <br>
             <br>
@@ -21,9 +21,9 @@
                                 <b-card class="list-card" style="margin-bottom: 20px;" border-variant="dark"
                                     header-tag="header" align="center">
                                     <template #header>
-                                        <b>lijstnaam: {{lijst.lijstNaam}} </b>
+                                        <b>List name: {{ lijst.lijstNaam }} </b>
                                     </template>
-                                    <b-card-text>{{lijst.lijstNaam}} bekijken.</b-card-text>
+                                    <b-card-text>{{ lijst.lijstNaam }} view.</b-card-text>
                                 </b-card>
                             </router-link>
                         </b-col>
