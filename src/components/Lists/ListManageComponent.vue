@@ -2,7 +2,7 @@
     <b-container class="main-container">
         <b-row align-h="between">
             <b-col>
-                <h1>List: {{ this.res.lijstNaam }}</h1>
+                <h2>List: {{ this.res.listName }}</h2>
                 <b-button style="height:40px" variant="secondary " v-on:click="hide = !hide">
                     <p v-if="this.hide">View list information</p>
                     <p v-if="!this.hide">Hide list information</p>
@@ -27,18 +27,17 @@
         <hr v-if="this.hide == false" />
         <b-row v-if="this.currentMode == 'view' && this.hide == false">
             <b-col>
-                <Lijstview v-bind:lijst="this.res">
-                </Lijstview>
+                <ListDetailsComponent v-bind:list="this.res"></ListDetailsComponent>
             </b-col>
         </b-row>
         <b-row v-if="this.currentMode == 'edit' && this.hide == false">
             <b-col>
-                <Lijstedit v-bind:lijst="this.res"></Lijstedit>
+                <ListEditComponent v-bind:list="this.res"></ListEditComponent>
             </b-col>
         </b-row>
         <b-row v-if="this.currentMode == 'delete' && this.hide == false">
             <b-col>
-                <Lijstdelete v-bind:lijst="this.res"></Lijstdelete>
+                <ListDeleteComponent v-bind:list="this.res"></ListDeleteComponent>
             </b-col>
         </b-row>
         <hr />
@@ -48,9 +47,10 @@
 </template>
 
 <script>
-import Lijstview from '../Lijsten/Lijstview.vue';
-import Lijstedit from '../Lijsten/Lijstedit.vue';
-import Lijstdelete from './ListDeleteComponent.vue';
+import ListDetailsComponent from '@/components/Lists/ListDetailsComponent.vue';
+import ListEditComponent from '@/components/Lists/ListEditComponent.vue';
+import ListDeleteComponent from '@/components/Lists/ListDeleteComponent.vue';
+// import getAllLists from '@/services/lists/listService.js';
 import axios from 'axios'
 import Vue from 'vue'
 
@@ -65,7 +65,8 @@ export default {
     },
     mounted() {
         this.currentMode = "view",
-            axios.get(Vue.prototype.$Api + "lijsten/" + this.$route.params.idlijst)
+            // this.res = getAllLists();
+            axios.get(Vue.prototype.$Api + "lists/" + this.$route.params.idlist)
                 .then((response) => {
                     this.res = response.data;
                     console.log(response.data);
@@ -75,7 +76,7 @@ export default {
                     console.log(err);
                 });
     },
-    components: { Lijstview, Lijstedit, Lijstdelete }
+    components: { ListDetailsComponent, ListEditComponent, ListDeleteComponent }
     ,
     methods: {
         editmode: function () {

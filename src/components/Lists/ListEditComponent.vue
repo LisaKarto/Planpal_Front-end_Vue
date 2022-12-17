@@ -4,12 +4,12 @@
 
             <b-form-group id="input-group-2" label-for="input-2">
                 <b>List name:</b>
-                <b-form-input id="input-2" v-model="form.lijstNaam" placeholder="Enter name" required></b-form-input>
+                <b-form-input id="input-2" v-model="form.listName" placeholder="Enter name" required></b-form-input>
             </b-form-group>
 
             <b-form-group id="input-group-3" label-for="input-3">
                 <b>Type of list:</b>
-                <b-form-select id="input-3" v-model="form.lijstSoort" :options="lijstsoorten" required></b-form-select>
+                <b-form-select id="input-3" v-model="form.listType" :options="listType" required></b-form-select>
             </b-form-group>
             <b-button type="submit" variant="success">Edit</b-button>
         </b-form>
@@ -26,15 +26,15 @@ import Vue from 'vue'
 
 export default {
     props: {
-        lijst: {}
+        list: {}
     }, data() {
         return {
             form: {
-                idLijst: this.lijst.idlijst,
-                lijstNaam: this.lijst.lijstNaam,
-                lijstSoort: this.lijst.lijstSoort,
+                idlist: this.list.idlist,
+                listName: this.list.listName,
+                listType: this.list.listType,
             },
-            lijstsoorten: [{ text: this.lijst.lijstSoort, value: this.lijst.lijstSoort }, 'To-do list', 'Item list'],
+            listType: [{ text: this.list.listType, value: this.list.listType }, 'To-do list', 'Item list'],
             show: true
         }
     },
@@ -42,7 +42,7 @@ export default {
         onSubmit(event) {
             event.preventDefault()
             alert(JSON.stringify(this.form))
-            axios.put(Vue.prototype.$Api + "lijsten/" + this.lijst.idlijst, this.form)
+            axios.put(Vue.prototype.$Api + "lists/" + this.list.idlist, this.form)
                 .then(function () {
                     this.$router.go();
                 }.bind(this));

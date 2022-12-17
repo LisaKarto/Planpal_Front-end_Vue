@@ -1,9 +1,9 @@
 <template>
     <b-container class="main">
 
-        <b>List name:</b> {{ this.lijst.lijstNaam }}
+        <b>List name:</b> {{ this.list.listName }}
         <br>
-        <b>Type of list:</b> {{ this.lijst.lijstSoort }}
+        <b>Type of list:</b> {{ this.list.listType }}
     </b-container>
 </template>
 
@@ -12,7 +12,7 @@
 
 export default {
     props: {
-        lijst: {}
+        list: {}
     }
 }
 

@@ -2,9 +2,9 @@
     <b-container>
         <b-row>
             <b-col>
-                <b>List name:</b> {{ this.lijst.lijstNaam }}
+                <b>List name:</b> {{ this.list.listName }}
                 <br>
-                <b>Type of list:</b> {{ this.lijst.lijstSoort }}
+                <b>Type of list:</b> {{ this.list.listType }}
             </b-col>
         </b-row>
         <br>
@@ -22,15 +22,15 @@ import Vue from 'vue'
 
 export default {
     props: {
-        lijst: {}
+        list: {}
     },
     methods: {
         onDelete(event) {
             event.preventDefault()
             alert("Your list is being deleted.")
-            axios.delete(Vue.prototype.$Api + "lijsten/" + this.lijst.idlijst)
+            axios.delete(Vue.prototype.$Api + "lists/" + this.list.idlist)
                 .then(function () {
-                    this.$router.replace('/lijsten')
+                    this.$router.replace('/lists')
                 }.bind(this));
         }
     }

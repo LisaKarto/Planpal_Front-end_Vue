@@ -1,16 +1,17 @@
 <template>
-  <div class="Lijsten">
-    <Lijsten />
+  <!-- <div class="Lijsten"> -->
+  <div>
+    <ListViewAllComponent />
   </div>
 </template>
 
 <script>
-import Lijsten from '@/components/Lijsten/Lijsten.vue'
+import ListViewAllComponent from '@/components/Lists/ListViewAllComponent.vue'
 
 export default {
-  name: 'LijstenView',
+  name: 'ListsView',
   components: {
-    Lijsten
+    ListViewAllComponent
   }
 }
 </script>

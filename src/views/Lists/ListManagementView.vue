@@ -1,16 +1,16 @@
 <template>
     <div>
-        <LijstBeheren />
+        <ListManageComponent/>
     </div>
 </template>
   
 <script>
-import LijstBeheren from '../components/Lijsten/LijstBeheren.vue';
+import ListManageComponent from '@/components/Lists/ListManageComponent.vue';
 export default {
 
-    name: 'LijstenView',
+    name: 'ListManagementView',
     components: {
-        LijstBeheren
+        ListManageComponent
     }
 }
 </script>

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import LoginButtonVue from './LoginButton.vue';
+import LoginButtonVue from '@/components/Auth0/LoginButton.vue';
 export default {
   name: 'HelloWorld',
   props: {
