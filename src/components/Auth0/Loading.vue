@@ -4,7 +4,7 @@
             <h1>Loading</h1>
             <img :src="loadingImg" alt="Loading..." />
             <br />
-            <img src="../assets/loading-cute.gif" alt="Loading..." />
+            <img src="../../assets/loading-cute.gif" alt="Loading..." />
         </div>
     </b-container>
 </template>
