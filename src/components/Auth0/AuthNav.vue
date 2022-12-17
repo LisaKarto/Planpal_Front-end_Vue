@@ -5,7 +5,7 @@
 </template>
   
 <script>
-import AuthenticationButton from '@/components/AuthenticationButton';
+import AuthenticationButton from '@/components/Auth0/AuthenticationButton.vue';
 
 export default {
     name: 'AuthNav',
