@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Vue from 'vue'
+import { deleteList } from '@/services/lists/listService';
+
 
 export default {
     props: {
@@ -28,9 +28,9 @@ export default {
         onDelete(event) {
             event.preventDefault()
             alert("Your list is being deleted.")
-            axios.delete(Vue.prototype.$Api + "lists/" + this.list.idlist)
+            deleteList(this.list.idlist)
                 .then(function () {
-                    this.$router.replace('/lists')
+                    this.$router.replace('/lists');
                 }.bind(this));
         }
     }

@@ -18,7 +18,7 @@
                     <b-icon-pencil-square></b-icon-pencil-square>
                 </b-button>
                 <!-- v-if="this.currentMode == 'view' || this.currentMode == 'edit'" -->
-                <b-button style="margin-left:5px;" variant="none" v-on:click="verwijdermode">
+                <b-button style="margin-left:5px;" variant="none" v-on:click="deletemode">
                     <b-icon-trash-fill>
                     </b-icon-trash-fill>
                 </b-button>
@@ -50,45 +50,38 @@
 import ListDetailsComponent from '@/components/Lists/ListDetailsComponent.vue';
 import ListEditComponent from '@/components/Lists/ListEditComponent.vue';
 import ListDeleteComponent from '@/components/Lists/ListDeleteComponent.vue';
-// import getAllLists from '@/services/lists/listService.js';
-import axios from 'axios'
-import Vue from 'vue'
-
+import { getList } from '@/services/lists/listService';
 
 export default {
     data: function () {
         return {
-            res: '',
+            res: [],
             currentMode: "view",
             hide: true
         }
     },
-    mounted() {
-        this.currentMode = "view",
-            // this.res = getAllLists();
-            axios.get(Vue.prototype.$Api + "lists/" + this.$route.params.idlist)
-                .then((response) => {
-                    this.res = response.data;
-                    console.log(response.data);
-                })
-                .catch(err => {
-                    this.res = err;
-                    console.log(err);
-                });
-    },
-    components: { ListDetailsComponent, ListEditComponent, ListDeleteComponent }
-    ,
     methods: {
+        getDList: function () {
+            getList(this.$route.params.idlist).then((result) => {
+                console.log(this.$route.params.idlis);
+                this.res = result;
+            })
+        }
+        ,
         editmode: function () {
             this.currentMode = "edit";
         },
         viewmode: function () {
             this.currentMode = "view";
         },
-        verwijdermode: function () {
+        deletemode: function () {
             this.currentMode = "delete";
         }
-    }
+    },
+    created() {
+        this.getDList();
+    },
+    components: { ListDetailsComponent, ListEditComponent, ListDeleteComponent }
 }
 
 </script>

@@ -25,8 +25,16 @@
 
     <b-row v-if="$auth.isAuthenticated" class="justify-content-md-center">
       <b-col>
-        <b-button class="m-3" variant="light">View my todo lists.</b-button>
-        <b-button variant="info">View my profile.</b-button>
+        <b-button @click="navigateLists()" class="m-3" variant="light">
+
+          View my todo lists.
+
+        </b-button>
+        <b-button @click="navigateProfile()" variant="info">
+
+          View my profile.
+
+        </b-button>
       </b-col>
     </b-row>
 
@@ -42,6 +50,13 @@ export default {
   }
   , components: {
     LoginButtonVue
+  },
+  methods: {
+    navigateLists() {
+      this.$router.push({ path: '/lists' });
+    }, navigateProfile() {
+      this.$router.push({ path: '/profile' });
+    },
   }
 }
 </script>
