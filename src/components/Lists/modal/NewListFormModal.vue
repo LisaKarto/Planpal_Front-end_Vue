@@ -7,11 +7,6 @@
                 </b-form-input>
             </b-form-group>
 
-            <!-- <b-form-group id="input-group-2" label="List description:" label-for="input-2">
-                <b-form-textarea id="input-2" v-model="form.lijstOmschrijving" placeholder="What is your list about?">
-                </b-form-textarea>
-            </b-form-group> -->
-
             <b-form-group id="input-group-3" label="Type of list:" label-for="input-3">
                 <b-form-select id="input-3" v-model="form.listType" :options="Soorten" required></b-form-select>
             </b-form-group>
@@ -30,7 +25,7 @@ export default {
         return {
             form: {
                 listName: '',
-                // LijstOmschrijving: '',
+
                 listType: null
             },
             Soorten: [{ text: 'Select a listtype', value: null }, 'To-do list', 'item list'],
@@ -63,7 +58,3 @@ export default {
 }
 
 </script>
-
-<style>
-
-</style>

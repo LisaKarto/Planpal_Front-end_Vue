@@ -3,6 +3,7 @@
 
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <title>Planpal</title>
         </head>
         <b-navbar toggleable="lg" type="dark" variant="dark">
             <!-- Main nav left -->

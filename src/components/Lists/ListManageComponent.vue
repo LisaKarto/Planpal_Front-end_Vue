@@ -9,15 +9,15 @@
                 </b-button>
             </b-col>
             <b-col v-if="this.hide == false" style="align-self: flex-end; text-align: right;" cols="4">
-                <!-- v-if="this.currentMode == 'edit'|| this.currentMode == 'delete'" -->
+
                 <b-button variant="none" v-on:click="viewmode">
                     <b-icon-eye-fill></b-icon-eye-fill>
                 </b-button>
-                <!--   v-if="this.currentMode == 'view' || this.currentMode == 'delete'" -->
+
                 <b-button style="margin-left:5px;" variant="none" v-on:click="editmode">
                     <b-icon-pencil-square></b-icon-pencil-square>
                 </b-button>
-                <!-- v-if="this.currentMode == 'view' || this.currentMode == 'edit'" -->
+
                 <b-button style="margin-left:5px;" variant="none" v-on:click="deletemode">
                     <b-icon-trash-fill>
                     </b-icon-trash-fill>
@@ -41,7 +41,7 @@
             </b-col>
         </b-row>
         <hr />
-        <!-- // get component with list contents -->
+
         <TaakOverzicht></TaakOverzicht>
     </b-container>
 </template>
