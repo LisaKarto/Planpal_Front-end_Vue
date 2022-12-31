@@ -22,9 +22,7 @@
 
 <script>
 
-import axios from 'axios'
-import Vue from 'vue'
-
+import { postList } from '@/services/lists/listService'
 
 export default {
     Name: 'CreateNewList',
@@ -44,10 +42,11 @@ export default {
             event.preventDefault()
             alert("List created.")
             console.log(this.form);
-            axios.post(Vue.prototype.$Api + "lists/", this.form)
+            postList(this.form)
                 .then(function () {
                     this.$router.go();
                 }.bind(this));
+            this.show = false;
         },
         onReset(event) {
             event.preventDefault()

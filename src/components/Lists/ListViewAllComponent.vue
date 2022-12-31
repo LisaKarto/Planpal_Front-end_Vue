@@ -23,7 +23,7 @@
                                     <template #header>
                                         <b>List name: {{ list.listName }} </b>
                                     </template>
-                                    <b-card-text>{{ list.listName }} view.</b-card-text>
+                                    <b-card-text>{{ list.listName }}.</b-card-text>
                                 </b-card>
                             </router-link>
                         </b-col>
@@ -36,9 +36,8 @@
 </template>
 <script>
 
-import axios from 'axios'
 import NewListFormModal from '@/components/Lists/modal/NewListFormModal.vue';
-import Vue from 'vue'
+import { getAllLists } from '@/services/lists/listService';
 
 export default {
     name: "listenPage",
@@ -47,16 +46,16 @@ export default {
             res: []
         };
     },
-    mounted() {
-        axios.get(Vue.prototype.$Api + "lists")
-            .then((response) => {
-                this.res = response.data;
-                console.log(response.data);
+    methods: {
+        getAllLists: function () {
+            getAllLists().then((result) => {
+                console.log(result);
+                this.res = result;
             })
-            .catch(err => {
-                this.res = err;
-                console.log(err);
-            });
+        },
+    },
+    created() {
+        this.getAllLists();
     },
     components: { NewListFormModal }
 }

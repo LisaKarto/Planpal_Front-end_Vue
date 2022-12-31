@@ -21,8 +21,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Vue from 'vue'
+import { putList } from '@/services/lists/listService'
 
 export default {
     props: {
@@ -42,7 +41,7 @@ export default {
         onSubmit(event) {
             event.preventDefault()
             alert(JSON.stringify(this.form))
-            axios.put(Vue.prototype.$Api + "lists/" + this.list.idlist, this.form)
+            putList(this.list.idlist, this.form)
                 .then(function () {
                     this.$router.go();
                 }.bind(this));
