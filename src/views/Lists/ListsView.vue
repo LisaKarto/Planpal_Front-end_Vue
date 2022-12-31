@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="Lijsten"> -->
   <div>
     <ListViewAllComponent />
   </div>
