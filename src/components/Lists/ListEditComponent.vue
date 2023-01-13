@@ -29,7 +29,7 @@ export default {
     }, data() {
         return {
             form: {
-                idlist: this.list.idlist,
+                idList: this.list.idList,
                 listName: this.list.listName,
                 listType: this.list.listType,
             },
@@ -41,7 +41,7 @@ export default {
         onSubmit(event) {
             event.preventDefault()
             alert(JSON.stringify(this.form))
-            putList(this.list.idlist, this.form)
+            putList(this.list.idList, this.form)
                 .then(function () {
                     this.$router.go();
                 }.bind(this));

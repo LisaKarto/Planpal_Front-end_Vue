@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         getDList: function () {
-            getList(this.$route.params.idlist).then((result) => {
+            getList(this.$route.params.idList).then((result) => {
                 console.log(this.$route.params.idlis);
                 this.res = result;
             })

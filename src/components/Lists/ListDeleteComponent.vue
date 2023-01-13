@@ -28,7 +28,7 @@ export default {
         onDelete(event) {
             event.preventDefault()
             alert("Your list is being deleted.")
-            deleteList(this.list.idlist)
+            deleteList(this.list.idList)
                 .then(function () {
                     this.$router.replace('/lists');
                 }.bind(this));

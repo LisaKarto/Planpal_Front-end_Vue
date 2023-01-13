@@ -18,7 +18,7 @@ const routes = [
     beforeEnter: authenticationGuard
   },
   {
-    path: '/list/:idlist',
+    path: '/list/:idList',
     name: 'ListManagementView',
     props: {
       default: true,
