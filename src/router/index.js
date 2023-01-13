@@ -12,24 +12,24 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/lijsten',
-    name: 'lijsten',
-    component: () => import('../views/LijstenView.vue'),
+    path: '/lists',
+    name: 'ListsView',
+    component: () => import('../views/Lists/ListsView.vue'),
     beforeEnter: authenticationGuard
   },
   {
-    path: '/lijst/:idlijst',
-    name: 'lijst',
+    path: '/list/:idList',
+    name: 'ListManagementView',
     props: {
       default: true,
     },
-    component: () => import('../views/LijstBeherenView.vue'),
+    component: () => import('../views/Lists/ListManagementView.vue'),
     beforeEnter: authenticationGuard
   },
   {
     path: '/Profile',
     name: 'ProfileComponent',
-    component: () => import('../components/Users/Profile.vue'),
+    component: () => import('../components/Auth0/Users/Profile.vue'),
     beforeEnter: authenticationGuard,
   }
 ]

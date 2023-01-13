@@ -2,35 +2,35 @@
     <b-container>
         <b-row>
             <b-col>
-                <b>Lijst naam:</b> {{this.lijst.lijstNaam}}
+                <b>List name:</b> {{ this.list.listName }}
                 <br>
-                <b>Lijst soort:</b> {{this.lijst.lijstSoort}}
+                <b>Type of list:</b> {{ this.list.listType }}
             </b-col>
         </b-row>
         <br>
         <b-row>
             <b-col>
-                <b-button @click="onDelete" variant="danger">verwijderen</b-button>
+                <b-button @click="onDelete" variant="danger">Delete</b-button>
             </b-col>
         </b-row>
     </b-container>
 </template>
 
 <script>
-import axios from 'axios';
-import Vue from 'vue'
+import { deleteList } from '@/services/lists/listService';
+
 
 export default {
     props: {
-        lijst: {}
+        list: {}
     },
     methods: {
         onDelete(event) {
             event.preventDefault()
-            alert("lijst wordt verwijdert.")
-            axios.delete(Vue.prototype.$Api + "lijsten/" + this.lijst.idlijst)
+            alert("Your list is being deleted.")
+            deleteList(this.list.idList)
                 .then(function () {
-                    this.$router.replace('/lijsten')
+                    this.$router.replace('/lists');
                 }.bind(this));
         }
     }

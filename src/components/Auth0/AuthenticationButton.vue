@@ -6,8 +6,8 @@
 </template>
   
 <script>
-import LoginButton from '@/components/LoginButton';
-import LogoutButton from '@/components/LogoutButton';
+import LoginButton from '@/components/Auth0/LoginButton.vue';
+import LogoutButton from '@/components/Auth0/LogoutButton.vue';
 
 export default {
     name: 'AuthenticationButton',

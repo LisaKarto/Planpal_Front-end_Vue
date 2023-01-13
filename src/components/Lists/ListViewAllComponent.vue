@@ -1,29 +1,29 @@
 <template>
     <b-container class="test" fluid="md">
-        <b-button style="float:right" v-b-modal.modal-xl variant="success">Lijst toevoegen</b-button>
+        <b-button style="float:right" v-b-modal.modal-xl variant="success">Create new list</b-button>
 
-        <b-modal id="modal-xl" hide-footer size="xl" title="Nieuwe lijst aanmaken">
+        <b-modal id="modal-xl" hide-footer size="xl" title="Nieuwe list aanmaken">
             <NewListFormModal></NewListFormModal>
         </b-modal>
-        <div v-if="!res.length">U heeft geen lijsten</div>
+        <div v-if="!res.length">No lists found.</div>
         <div v-else>
             <h2>
-                u heeft {{res.length}} lijst(en).
+                You have {{ res.length }} list(s).
             </h2>
             <br>
             <br>
             <br>
             <b-container class="bv-example-row">
                 <b-row cols="3">
-                    <b-card-group v-for="lijst in res" :key="lijst.idlijst" deck>
+                    <b-card-group v-for="list in res" :key="list.idList" deck>
                         <b-col>
-                            <router-link :to="`/lijst/${lijst.idlijst}`" class="list-card-link">
+                            <router-link :to="`/list/${list.idList}`" class="list-card-link">
                                 <b-card class="list-card" style="margin-bottom: 20px;" border-variant="dark"
-                                    header-tag="header" align="center">
+                                    header-tag="header">
                                     <template #header>
-                                        <b>lijstnaam: {{lijst.lijstNaam}} </b>
+                                        <b>List name: {{ list.listName }} </b>
                                     </template>
-                                    <b-card-text>{{lijst.lijstNaam}} bekijken.</b-card-text>
+                                    <b-card-text>{{ list.listName }}.</b-card-text>
                                 </b-card>
                             </router-link>
                         </b-col>
@@ -36,27 +36,26 @@
 </template>
 <script>
 
-import axios from 'axios'
-import NewListFormModal from '../Lijsten/modal/NewListFormModal.vue';
-import Vue from 'vue'
+import NewListFormModal from '@/components/Lists/modal/NewListFormModal.vue';
+import { getAllLists } from '@/services/lists/listService';
 
 export default {
-    name: "LijstenPage",
+    name: "listenPage",
     data() {
         return {
             res: []
         };
     },
-    mounted() {
-        axios.get(Vue.prototype.$Api + "lijsten")
-            .then((response) => {
-                this.res = response.data;
-                console.log(response.data);
+    methods: {
+        getAllLists: function () {
+            getAllLists().then((result) => {
+                console.log(result);
+                this.res = result;
             })
-            .catch(err => {
-                this.res = err;
-                console.log(err);
-            });
+        },
+    },
+    created() {
+        this.getAllLists();
     },
     components: { NewListFormModal }
 }
@@ -79,4 +78,3 @@ export default {
     color: whitesmoke
 }
 </style>
-  

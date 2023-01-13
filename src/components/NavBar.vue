@@ -3,6 +3,7 @@
 
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <title>Planpal</title>
         </head>
         <b-navbar toggleable="lg" type="dark" variant="dark">
             <!-- Main nav left -->
@@ -22,8 +23,8 @@
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
                     <b-nav-item v-if="$auth.isAuthenticated">
-                        <router-link to="/lijsten" class="link">
-                            Mijn lijsten
+                        <router-link to="/lists" class="link">
+                            View lists
                         </router-link>
                     </b-nav-item>
                     <b-nav-item v-if="$auth.isAuthenticated">
@@ -49,7 +50,7 @@
 
 
 <script>
-import AuthNav from '@/components/AuthNav';
+import AuthNav from '@/components/Auth0/AuthNav.vue';
 
 export default {
     name: 'NavBar',
