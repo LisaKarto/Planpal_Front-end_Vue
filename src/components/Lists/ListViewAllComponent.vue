@@ -15,9 +15,9 @@
             <br>
             <b-container class="bv-example-row">
                 <b-row cols="3">
-                    <b-card-group v-for="list in res" :key="list.idlist" deck>
+                    <b-card-group v-for="list in res" :key="list.idList" deck>
                         <b-col>
-                            <router-link :to="`/list/${list.idlist}`" class="list-card-link">
+                            <router-link :to="`/list/${list.idList}`" class="list-card-link">
                                 <b-card class="list-card" style="margin-bottom: 20px;" border-variant="dark"
                                     header-tag="header">
                                     <template #header>
@@ -78,4 +78,3 @@ export default {
     color: whitesmoke
 }
 </style>
-  
