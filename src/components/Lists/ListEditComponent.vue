@@ -32,6 +32,8 @@ export default {
                 idList: this.list.idList,
                 listName: this.list.listName,
                 listType: this.list.listType,
+                isDone: this.list.isDone,
+                uid: this.$auth.user.sub
             },
             listType: [{ text: this.list.listType, value: this.list.listType }, 'To-do list', 'Item list'],
             show: true
@@ -40,7 +42,7 @@ export default {
     methods: {
         onSubmit(event) {
             event.preventDefault()
-            alert(JSON.stringify(this.form))
+            // alert(JSON.stringify(this.form))
             putList(this.list.idList, this.form)
                 .then(function () {
                     this.$router.go();
