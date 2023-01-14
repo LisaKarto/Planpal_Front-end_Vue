@@ -25,8 +25,8 @@ export default {
         return {
             form: {
                 listName: '',
-
-                listType: null
+                listType: null,
+                uid: this.$auth.user.sub
             },
             Soorten: [{ text: 'Select a listtype', value: null }, 'To-do list', 'item list'],
             show: true
@@ -35,8 +35,8 @@ export default {
     methods: {
         onSubmit(event) {
             event.preventDefault()
-            alert("List created.")
             console.log(this.form);
+            alert("List created.")
             postList(this.form)
                 .then(function () {
                     this.$router.go();

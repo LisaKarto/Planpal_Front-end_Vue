@@ -10,6 +10,15 @@ export async function getAllLists() {
   }
 }
 
+export async function getlistsFromUser(uid) {
+  try {
+    const response = await axios.get(Vue.prototype.$Api + "lists/mylists/" + uid);
+    return response.data;
+  } catch (error) {
+    return [];
+  }
+}
+
 export async function getList(id) {
   try {
     const response = await axios.get(Vue.prototype.$Api + "lists/" + id)

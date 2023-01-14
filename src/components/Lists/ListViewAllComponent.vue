@@ -21,9 +21,20 @@
                                 <b-card class="list-card" style="margin-bottom: 20px;" border-variant="dark"
                                     header-tag="header">
                                     <template #header>
-                                        <b>List name: {{ list.listName }} </b>
+                                        <b>{{ list.listName }} </b>
+
+                                        <!-- if isdone 0 -> x emote -->
+                                        <!-- if isdone 1 -> check emote -->
                                     </template>
-                                    <b-card-text>{{ list.listName }}.</b-card-text>
+                                    <b-row>
+                                        <b-col>
+                                            <div v-if="list.isDone">✔ Done</div>
+                                            <div v-if="!list.isDone">❌Not done</div>
+                                            <!-- {{ list.isDone }} -->
+                                        </b-col>
+                                        <b-card-text>{{ $auth.user.nickname }}</b-card-text>
+                                    </b-row>
+
                                 </b-card>
                             </router-link>
                         </b-col>
@@ -37,7 +48,7 @@
 <script>
 
 import NewListFormModal from '@/components/Lists/modal/NewListFormModal.vue';
-import { getAllLists } from '@/services/lists/listService';
+import { getlistsFromUser } from '@/services/lists/listService';
 
 export default {
     name: "listenPage",
@@ -47,15 +58,15 @@ export default {
         };
     },
     methods: {
-        getAllLists: function () {
-            getAllLists().then((result) => {
+        getlistsFromUser: function () {
+            getlistsFromUser(this.$auth.user.sub).then((result) => {
                 console.log(result);
                 this.res = result;
             })
         },
     },
     created() {
-        this.getAllLists();
+        this.getlistsFromUser();
     },
     components: { NewListFormModal }
 }
