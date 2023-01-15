@@ -87,6 +87,11 @@ export default {
             })
         },
         ToggleStatus: function () {
+            if (this.res.isDone == 1) {
+                this.res.isDone = 0;
+            } else if (this.res.isDone == 0) {
+                this.res.isDone = 1;
+            }
             putList(this.$route.params.idList, this.res);
             this.$bvToast.toast(`Altered list status`, {
                 title: 'Planpal says',
