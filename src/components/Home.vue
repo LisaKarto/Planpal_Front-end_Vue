@@ -7,7 +7,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <h1 style="color:azure">{{ msg }}</h1>
+        <h1 test-data="msg-container" style="color:azure">{{ msg }}</h1>
       </b-col>
     </b-row>
     <!-- Show when logged out -->

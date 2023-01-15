@@ -22,7 +22,6 @@
                                     header-tag="header">
                                     <template #header>
                                         <b>{{ list.listName }} </b>
-
                                         <!-- if isdone 0 -> x emote -->
                                         <!-- if isdone 1 -> check emote -->
                                     </template>
