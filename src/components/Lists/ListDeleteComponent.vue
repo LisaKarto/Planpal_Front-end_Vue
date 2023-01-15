@@ -27,7 +27,12 @@ export default {
     methods: {
         onDelete(event) {
             event.preventDefault()
-            alert("Your list is being deleted.")
+            this.$bvToast.toast(`Your list is being deleted.`, {
+                title: 'Planpal says',
+                autoHideDelay: 1500,
+                solid: true,
+                variant: "info"
+            })
             deleteList(this.list.idList)
                 .then(function () {
                     this.$router.replace('/lists');

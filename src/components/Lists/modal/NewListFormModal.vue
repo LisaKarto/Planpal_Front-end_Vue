@@ -36,7 +36,12 @@ export default {
         onSubmit(event) {
             event.preventDefault()
             console.log(this.form);
-            alert("List created.")
+            this.$bvToast.toast(`List is being created.`, {
+                title: 'Planpal says',
+                autoHideDelay: 1500,
+                solid: true,
+                variant: "success"
+            })
             postList(this.form)
                 .then(function () {
                     this.$router.go();

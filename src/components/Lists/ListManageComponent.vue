@@ -15,7 +15,7 @@
             </b-col>
 
             <b-col style="align-self: flex-end;" cols="1">
-                <b-button v-b-tooltip.hover.top title="Toggle done status" style="line-height:2;"
+                <b-button v-b-tooltip.hover.top title="Toggle done status" style="line-height:2;min-width: 50px;"
                     @click="ToggleStatus()">
                     <b-button-text v-if="this.res.isDone">✔</b-button-text>
                     <b-button-text v-if="!this.res.isDone">❌</b-button-text>
@@ -93,6 +93,12 @@ export default {
                 this.res.isDone = 1;
             }
             putList(this.$route.params.idList, this.res);
+            this.$bvToast.toast(`Altered list status`, {
+                title: 'Planpal says',
+                autoHideDelay: 1500,
+                solid: true,
+                variant: "info"
+            })
         },
         ReturnToPage: function () {
             this.$router.push({ path: '/lists' });
